@@ -17,3 +17,11 @@ CREATE TABLE parks(
   lng TEXT
 );
 
+ALTER TABLE users
+ADD COLUMN park_id INTEGER;
+
+
+
+Shore Reserve, 223 Reynard St, Pascoe Vale South
+Jacobs Reserve, Brunswick West
+Dunstan Reserve, 24 Peacock St, Brunswick West
