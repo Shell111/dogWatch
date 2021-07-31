@@ -34,18 +34,13 @@ const errorHandler = require('./middlewares/error_handler')
 
 // controllers
 const usersController = require('./controllers/users_controller.js')
-const parksController = require('./controllers/parks_controller')
+const parksController = require('./controllers/parks_controller.js')
+const bingController = require('./controllers/bing_controller.js')
 
 const app = express()
 
 // process.env.PORT is for Heroku and 3000 is for local access
 const port = process.env.PORT || 3000
-
-// API KEYS should be in your ENV
-// ON HEROKU, you would set this as an environment variable
-// Locally, we used that development thing called dotenv
-
-const BING_MAPS_KEY = process.env.BING_MAPS_API_KEY
 
 // start the web server
 app.listen(port, () => {
@@ -70,13 +65,11 @@ app.use(express.json())
 
 // app.use('/api/users', usersController)
 
-// app.use('/api/parks', parksController)
+app.use('/api/parks', parksController)
+
+app.use('/api/bing', bingController)
 // //    |
 // //    V
 // //--handle any errors that are thrown _anywhere_ in the stack of middlewares
 // app.use(errorHandler)
 
-// /api/third-party/spoontacular/recipes?name=Whatever
-// app.get('/api/third-party/spoontacular/recipes', (req, res)=>{
-//   axios.get('https://spoontactular.com/?apiKey')// + add whatever the front end sent via req.params
-// })
