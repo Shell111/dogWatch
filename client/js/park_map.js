@@ -12,11 +12,15 @@ async function initializeParkMap() {
         center: new Microsoft.Maps.Location(center.lat, center.lng)
       })
       axios.get('/api/parks')
-        .then(parks => {
-          parks.data.forEach(p => addParkPin(p))
+        .then(park => {
+          park.data.forEach(p => addParkPin(p))
+          // park.data.forEach(p => state.parks.push(p))
+          // console.log(state.parks)
+
         })
     })
 }
+
 
 
   //Center the map on the user's location.

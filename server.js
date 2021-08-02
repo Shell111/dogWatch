@@ -63,7 +63,7 @@ app.use(express.json())
 // //    V
 // // routes (middleware)
 
-// app.use('/api/users', usersController)
+app.use('/api/users', usersController)
 
 app.use('/api/parks', parksController)
 
