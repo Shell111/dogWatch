@@ -1,0 +1,107 @@
+/* resetting the fieldset CSS */
+fieldset {
+  border: none;
+  padding: 10px 0;
+}
+
+/* Forms section for Flex */
+
+.sign-in-forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Log in header section */
+
+.log-in-header h3 {
+  margin-bottom: 5px; 
+}
+
+.log-in-header p {
+  margin: 0 0 5px 0; 
+}
+
+/* Log in form and button */ 
+
+.log-in-form input {
+  width: 340px;
+  height: 44px;
+  border-radius: 12px;
+  border: .5px solid #E5E5E5;
+  box-shadow: 0 4px 4px #E5E5E5;
+  padding-left: 10px;
+}
+
+.log-in-form a {
+  color: black;
+  text-decoration: none;
+  font-weight: 400;
+  display: flex;
+  margin-bottom: 10px;
+  font-size: .9em;
+}
+
+.log-in-form a:hover {
+  color: #F1B13A;
+}
+
+.log-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in-btn {
+  background: #F1B13A;
+  border-radius: 12px;
+  width: 300px;
+  height: 44px;
+  border: none;
+  box-shadow: 2px 5px 5px rgb(235, 234, 233);
+  transition: ease-in-out .4s;
+}
+.sign-in-btn:hover {
+  box-shadow:none;
+}
+
+/* Create account form header */ 
+
+.create-account-header h3 {
+  margin: 30px 0 5px 0; 
+}
+
+.create-account-header p {
+  margin: 0 0 5px 0; 
+}
+
+/* Sign up form and button */ 
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-up-form input {
+  width: 340px;
+  height: 44px;
+  border-radius: 12px;
+  border: .5px solid #E5E5E5;
+  box-shadow: 0 4px 4px #E5E5E5;
+  padding-left: 10px;
+}
+
+.create-account-btn {
+  background: #F1B13A;
+  border-radius: 12px;
+  width: 300px;
+  height: 44px;
+  border: none;
+  box-shadow: 2px 5px 5px rgb(235, 234, 233);
+  transition: ease-in-out .4s;
+  margin: 10px 0 0 0;
+}
+.create-account-btn:hover {
+  box-shadow:none;
+}
