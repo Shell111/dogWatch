@@ -1,0 +1,64 @@
+/* Common */
+* {
+  /* to include padding & border in width & heigher calculations */
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  padding:0;
+  margin:0; 
+  width:100%;
+  overflow-x: hidden;
+}
+
+/* container for phone sizing */
+
+.layout {
+  max-width: 370px;
+  margin: 0 auto;
+  border: 1px solid lightgray;
+  padding: 0 15px;
+}
+
+/* Kasun had this error css in the common file */
+#errors {
+  font-weight: bold;
+  color: red;
+}
+
+.hide {
+  display: none;
+}
+
+/* Font sizing */
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.12em;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+h5 {
+  font-weight: 300;
+}
+
+p {
+  font-size: 0.85em;
+}
+
+a {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}

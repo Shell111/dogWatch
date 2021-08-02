@@ -1,0 +1,76 @@
+/* CSS for navigation and getting started header section*/
+
+.logo-and-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #E5E5E5;
+  margin-bottom: 0;
+}
+
+/* .header-nav nav{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+} */
+
+/* navigation  */
+
+.header-nav nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 0;
+}
+
+.header-nav nav li {
+  padding: 0 0.5em;
+}
+
+.header-nav nav li a {
+  text-decoration: none;
+}
+
+.header-nav nav li a:hover {
+  color: #F1B13A;
+}
+
+.header-nav ul {
+  text-transform: uppercase;
+  font-size: .9em;
+}
+/* logo text placeholder */
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+.dog-text{
+  color: #F1B13A;
+}
+
+/* Getting started text and button */
+.get-started {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.get-started p {
+  font-size: .85em;
+}
+
+
+.get-started-btn {
+  background: #F1B13A;
+  border-radius: 8px;
+  width: 332px;
+  height: 44px;
+  border: none;
+  box-shadow: 2px 5px 5px rgb(235, 234, 233);
+  transition: ease-in-out .4s;
+}
+.get-started-btn:hover {
+  box-shadow:none;
+}

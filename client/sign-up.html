@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/navigation.css">
+  <link rel="stylesheet" href="./css/parks.css">
+  <link rel="stylesheet" href="./css/sign-up.css">
+  <link rel="stylesheet" href="./css/footer.css">
+
+  <title>Document</title>
+</head>
+<body>
+
+  <section class="layout">
+    <section class="log-in-header">
+      <h3>Have an account?</h3>
+      <p>Sign in with your Email Address</p>
+    </section>
+
+    <section class="sign-in-forms">
+
+      <form class="log-in-form" id='log-in-form' action='/users' method='POST'>
+        <section id="errors"></section>
+          <fieldset>
+            <!-- <label for="">Email Address:</label><br> -->
+            <input type="text" name='email' placeholder="Email Address">
+          </fieldset>
+          <fieldset>
+            <!-- <label for="">Password:</label><br> -->
+            <input type="password" name='password'  placeholder="Password">
+          </fieldset>
+          <a href="">Forgotten password</a>
+          <button class="sign-in-btn">Sign in</button>
+      </form>
+    </section>
+
+
+    <section class="create-account-header">
+      <h3>Create an account</h3>
+      <p>Please sign up</p>
+    </section>
+
+    <section class="sign-in-forms">
+
+      <form class="sign-up-form" id='sign-up-form' action='/users' method='POST'>
+        <section id="errors"></section>
+          <fieldset>
+            <!-- <label for="">First Name:</label><br> -->
+            <input type="text" name='name' placeholder="First Name">
+          </fieldset>
+          <fieldset>
+            <!-- <label for="">Email Address:</label><br> -->
+            <input type="text" name='email' placeholder="Email Address">
+          </fieldset>
+          <fieldset>
+            <!-- <label for="">Create Password:</label><br> -->
+            <input type="password" name='password' placeholder="Create Passworrd">
+          </fieldset>
+          <fieldset>
+            <!-- <label for="">Dog Name:</label><br> -->
+            <input type="text" name='dog-name' placeholder="Dog Name">
+          </fieldset>
+          <fieldset>
+            <!-- <label for="">Dog Energy Level:</label><br> -->
+            <input type="text" name='dog-energy-level' placeholder="Dog Energy Level">
+          </fieldset>
+          <button class="create-account-btn">Create an account</button>
+      </form>
+    </section>
+
+    <footer>
+      <h5>Footer placedholder text</h5>
+    </footer>
+
+</section>
+
+
+  
+</body>
+</html>

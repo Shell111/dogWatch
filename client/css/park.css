@@ -1,5 +1,48 @@
 #parks-map {
   position: relative;
-  /* 90% of the height of the screen (viewport height - vh) */
-  height: 50vh; 
+  height: 40vh;
+  filter:saturate(2);
+  /* filter: hue-rotate(-150deg); */
+  /* filter: hue-rotate(200deg); */
+}
+
+/* Map screenshot */
+
+.layout .screenshot {
+  max-width: 100%;
+  padding: 0;
+  margin-top: 20px;
+}
+
+/* Park info news feed  */
+
+.park-info {
+  /* display: flex;
+  justify-content: space-evenly; */
+  display: grid;
+  grid-template-columns: 15% 75% 1fr;
+  margin: 10px 0;
+  border-bottom: 1px solid #E5E5E5
+}
+
+.park-info h2 {
+  margin: 5px 0 0 0;
+  padding: 0;
+  color: #dda02e;
+}
+
+.park-info p {
+  margin: 2px 0 10px 0;
+  padding: 0;
+}
+
+.material-icons.park {
+  color: black;
+  margin: 10px 0 0 5px;
+  font-size: 1.7em;
+}
+
+.material-icons.navigate_next {
+  margin: 13px 0 0 0;
+  font-size: 1.7em;
 }
