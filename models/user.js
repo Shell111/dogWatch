@@ -1,5 +1,6 @@
 // command click on the link (e.h. ../db/db) will open the file - following link
 const db = require('../db/db')
+const bcrypt = require('bcrypt')
 
 const User = {
   // creating another function inside the object
@@ -19,16 +20,42 @@ const User = {
       .then(dbRes => dbRes.rows)
   },
 
+  createUser(name, email, dog_name, energy_level,password) {
+    // use hashing to create the password_digest
+    const password_digest = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+  
+    // put it into the table created
+    const sql = `
+      INSERT INTO users(name, email, dog_name, energy_level, password_digest)
+      VALUES($1, $2, $3, $4, $5)
+      RETURNING *;
+    `
+
+    return db.query(sql, [name, email, dog_name, energy_level, password_digest])
+      .then(dbResponse => {
+        // this will return just the user we want -> promise chaining
+        return dbResponse.rows[0]
+      })
+  },
+
+  findByEmail(email) {
+    const sql = `SELECT * FROM users
+      WHERE email = $1;`
+
+    return db.query(sql, [email])
+      .then(dbResponse => {
+        return dbResponse.rows[0]
+      })
+  },
+
   // model file takes info from controller and implements it in the backend the returns back to user
-  // delete() {
+  // delete(id) {
   //   const sql = `
-  //   DELETE FROM treasures WHERE id = $1
+  //   DELETE park_id FROM users WHERE id = $1
   //   `
   //   return db.query(sql, [id])
   // }
 }
-
-
 
 module.exports = User
   

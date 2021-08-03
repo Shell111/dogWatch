@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/navigation.css">
@@ -22,8 +24,7 @@
     </section>
 
     <section class="sign-in-forms">
-
-      <form class="log-in-form" id='log-in-form' action='/users' method='POST'>
+      <form class="log-in-form" id='log-in-form' action='/sessions' method='POST'>
         <section id="errors"></section>
           <fieldset>
             <!-- <label for="">Email Address:</label><br> -->
@@ -38,14 +39,12 @@
       </form>
     </section>
 
-
     <section class="create-account-header">
       <h3>Create an account</h3>
       <p>Please sign up</p>
     </section>
 
     <section class="sign-in-forms">
-
       <form class="sign-up-form" id='sign-up-form' action='/users' method='POST'>
         <section id="errors"></section>
           <fieldset>
@@ -75,10 +74,23 @@
     <footer>
       <h5>Footer placedholder text</h5>
     </footer>
-
 </section>
-
-
   
+<script>
+  // const signUpForm = document.querySelector('#sign-up-form')
+  // signUpForm.addEventListener('submit', event => {
+  //     event.preventDefault();
+  //     const data = Object.fromEntries(new FormData(signUpForm));
+  //     axios.post('/api/sessions', data).then(sessionInfo => {
+  //         console.log(sessionInfo);
+  //         if (sessionInfo.data.error) {
+  //             // Update DOM to display error message
+  //         } else {
+  //             window.location = '/'
+  //         }
+  //     })
+  // })
+</script>
+
 </body>
 </html>
