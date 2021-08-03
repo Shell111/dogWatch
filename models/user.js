@@ -6,13 +6,12 @@ const User = {
   // collect all data and query the database using that sql command and then that allows us to access all the records inside the PSQL table -> all the treasures
   countDogs() {
     const sql = `
-    SELECT users.park_id, COUNT(*), parks.id
-    FROM users
-    INNER JOIN parks
-    ON users.park_id = parks.id
-    GROUP BY users.park_id, parks.id;
+      SELECT users.park_id, COUNT(*), parks.id
+      FROM users
+      INNER JOIN parks
+      ON users.park_id = parks.id
+      GROUP BY users.park_id, parks.id;
     `
-
 
     console.log('sql')
     return db
