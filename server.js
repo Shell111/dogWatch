@@ -15,18 +15,19 @@ const session = require('express-session')
 // app.set('views', './views')
 
 // session in Ruby auto comes with cookie -> need to do BHS in js
-const sess = {
+const sessionConfig = {
   secret : process.env.SESSION_SECRET,
-  cookie : {}
+  cookie : {},
+  saveUninitialized: false,
+  resave: false,
 }
 
 // make it so that you can use a secure HTTPS instead of HTTP (less secure)
 // cookies are encrypted -> session_secret similar to salting on passwords 
 if(process.env.NODE_ENV === 'production'){
-  sess.cookie.secure = true;
+  sessionConfig.cookie.secure = true;
   // app.set('trust proxy', 1); // not sure if strictly required
 }
-
 
 // middlewares
 const logger = require('./middlewares/logger')
@@ -34,6 +35,7 @@ const errorHandler = require('./middlewares/error_handler')
 
 // controllers
 const usersController = require('./controllers/users_controller.js')
+const sessionsController = require('./controllers/sessions_controller.js')
 const parksController = require('./controllers/parks_controller.js')
 const bingController = require('./controllers/bing_controller.js')
 
@@ -57,13 +59,15 @@ app.use(express.static('client'))
 // // parse JSON Body to req.body
 
 app.use(express.json())
-// app.use(session(sess))  // From Alex's session on Sessions
+app.use(session(sessionConfig))
 
 // //    |
 // //    V
 // // routes (middleware)
 
 app.use('/api/users', usersController)
+
+app.use('/api/sessions', sessionsController)
 
 app.use('/api/parks', parksController)
 
