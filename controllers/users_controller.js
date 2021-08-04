@@ -1,5 +1,7 @@
 const User = require('../models/user')
 
+console.log('hello1')
+
 const express = require('express')
 
 const router = express.Router()
@@ -23,5 +25,18 @@ router.post('/', (req, res) => {
       res.json(user);
   });
 })
+
+// router.post('/', (req, res) => {
+//   User  
+//     .selectPark(req.body.park_id)
+//     .then(park => res.json(park))
+// })
+  
+
+//     // Take user thats logged in, take their ID 
+//     // 
+    
+
+
 
 module.exports = router;

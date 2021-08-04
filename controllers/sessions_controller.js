@@ -14,14 +14,17 @@ router.post('/', (req, res) => {
   // res.json(req.body.password)
   User.findByEmail(req.body.email)
     .then(user => {
+      // console.log(user)
       // res.json(bcrypt.compareSync(req.body.password, user.password_digest))   -> returns false
       // check if user is defined and compare what the user has typed in to what is in the database
       if (user && bcrypt.compareSync(req.body.password, user.password_digest)) {
         req.session.userId = user.id
-        res.json(req.session)
+        User
+          .selectPark(req.body.park_id)
+          .then(park => res.json(park))
       } else {
         // error - user not found or wrong password
-        res.status(404).json({error: "Incorrect username or password"})
+        res.status(404).json({ error: "Incorrect username or password" })
       }
     })
 })
@@ -36,5 +39,16 @@ router.delete('/', (req, res) => {
   req.session.destroy() // remove/reset the session
   res.json({})
 })
+
+
+// router.post('/', (req, res) => {
+
+
+
+//   //     // Take user thats logged in, take their ID 
+//   //     // 
+
+
+// })
 
 module.exports = router

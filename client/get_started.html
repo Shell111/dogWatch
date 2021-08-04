@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ 
+  <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" ></script>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="./css/common.css">
@@ -12,6 +13,8 @@
   <link rel="stylesheet" href="./css/parks.css">
   <link rel="stylesheet" href="./css/get_started.css">
   <link rel="stylesheet" href="./css/footer.css">
+
+
 
   <title>Document</title>
 </head>
@@ -24,7 +27,7 @@
     </section>
 
     <section class="sign-in-forms">
-      <form class="log-in-form" id='log-in-form' action='/sessions' method='POST'>
+      <form id='log-in-form' class="log-in-form"  action='/sessions' method='POST'>
         <section id="errors"></section>
           <fieldset>
             <!-- <label for="">Email Address:</label><br> -->
@@ -45,7 +48,7 @@
     </section>
 
     <section class="sign-in-forms">
-      <form class="sign-up-form" id='sign-up-form' action='/users' method='POST'>
+      <form id="sign-up-form" class="sign-up-form" action='/users' method='POST'>
         <section id="errors"></section>
           <fieldset>
             <!-- <label for="">First Name:</label><br> -->
@@ -61,11 +64,11 @@
           </fieldset>
           <fieldset>
             <!-- <label for="">Dog Name:</label><br> -->
-            <input type="text" name='dog-name' placeholder="Dog Name">
+            <input type="text" name='dog_name' placeholder="Dog Name">
           </fieldset>
           <fieldset>
             <!-- <label for="">Dog Energy Level:</label><br> -->
-            <input type="text" name='dog-energy-level' placeholder="Dog Energy Level">
+            <input type="text" name='energy_level' placeholder="Energy Level">
           </fieldset>
           <button class="create-account-btn">Create an account</button>
       </form>
@@ -77,18 +80,56 @@
 </section>
   
 <script>
+const signUpForm = document.querySelector('#sign-up-form')
+
+signUpForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const data = Object.fromEntries(new FormData(signUpForm));
+    axios.post('/api/users', data)
+        .then(successResponse => window.location = '/')
+        // .catch(errorResponse =>{
+        //     // console.log(errorResponse);
+        //     document.querySelector('#errors')
+        //         .innerHTML = errorResponse.response.data.message;
+         
+})
+
+const loginForm = document.querySelector('#log-in-form')
+
+loginForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const data = Object.fromEntries(new FormData(loginForm));
+    axios.post('/api/sessions', data)
+        .then(successResponse => window.location = '/selected-park.html')
+        // .catch(errorResponse =>{
+        //     // console.log(errorResponse);
+        //     document.querySelector('#errors')
+        //         .innerHTML = errorResponse.response.data.message;
+         
+})
+
+
+
+
+
+
+
+
   // const signUpForm = document.querySelector('#sign-up-form')
   // signUpForm.addEventListener('submit', event => {
   //     event.preventDefault();
   //     const data = Object.fromEntries(new FormData(signUpForm));
-  //     axios.post('/api/sessions', data).then(sessionInfo => {
-  //         console.log(sessionInfo);
-  //         if (sessionInfo.data.error) {
-  //             // Update DOM to display error message
-  //         } else {
+  //     axios.post('/api/users', data)
+  //       .then(successResponse => 
+  //         // console.log(sessionInfo);
+  //         // if (sessionInfo.data.error) {
+  //         //     // Update DOM to display error message
+  //         // } else {
   //             window.location = '/'
-  //         }
-  //     })
+  //         // }
+  //     )
   // })
 </script>
 

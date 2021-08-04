@@ -20,18 +20,18 @@ const User = {
       .then(dbRes => dbRes.rows)
   },
 
-  createUser(name, email, dog_name, energy_level,password) {
+  createUser(name, email, password, dog_name, energy_level) {
     // use hashing to create the password_digest
     const password_digest = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
   
     // put it into the table created
     const sql = `
-      INSERT INTO users(name, email, dog_name, energy_level, password_digest)
+      INSERT INTO users(name, email, password_digest, dog_name, energy_level)
       VALUES($1, $2, $3, $4, $5)
       RETURNING *;
     `
 
-    return db.query(sql, [name, email, dog_name, energy_level, password_digest])
+    return db.query(sql, [name, email, password_digest, dog_name, energy_level])
       .then(dbResponse => {
         // this will return just the user we want -> promise chaining
         return dbResponse.rows[0]
@@ -48,6 +48,24 @@ const User = {
       })
   },
 
+  selectPark(park) {
+    const sql = `INSERT INTO users(park_id) 
+    VALUES($1) 
+    RETURNING *;`
+
+    return db.query(sql, [park])
+      .then(dbResponse => {
+        // this will return just the user we want -> promise chaining
+        return dbResponse.rows[0]
+      })
+  },
+
+
+
+
+
+
+
   // model file takes info from controller and implements it in the backend the returns back to user
   // delete(id) {
   //   const sql = `
@@ -56,6 +74,8 @@ const User = {
   //   return db.query(sql, [id])
   // }
 }
+
+
 
 module.exports = User
   
