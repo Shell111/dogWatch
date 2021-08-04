@@ -39,7 +39,8 @@ const User = {
   },
 
   findByEmail(email) {
-    const sql = `SELECT * FROM users
+    const sql = `
+      SELECT * FROM users
       WHERE email = $1;`
 
     return db.query(sql, [email])
@@ -48,8 +49,18 @@ const User = {
       })
   },
 
+  getNames() {
+    const sql = `
+      SELECT id, name, dog_name FROM users;`
+
+    return db
+    .query(sql)
+    .then(dbRes => dbRes.rows)
+  },
+
   selectPark(park, id) {
-    const sql = `UPDATE users
+    const sql = `
+    UPDATE users
     SET park_id = $1 
     WHERE id = $2;
     `
@@ -61,19 +72,14 @@ const User = {
       })
   },
 
-
-
-
-
-
-
-  // model file takes info from controller and implements it in the backend the returns back to user
-  // delete(id) {
-  //   const sql = `
-  //   DELETE park_id FROM users WHERE id = $1
-  //   `
-  //   return db.query(sql, [id])
-  // }
+  logout(id) {
+    const sql = `
+    UPDATE users
+    SET park_id = null 
+    WHERE id = $1;
+    `
+    return db.query(sql, [id])
+  }
 }
 
 

@@ -1,4 +1,4 @@
-console.log('hello')
+// console.log('hello')
 
 function renderParksList() {
   document.querySelector('#park-news-feed').innerHTML = `
