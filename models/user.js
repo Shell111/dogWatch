@@ -23,7 +23,7 @@ const User = {
   createUser(name, email, password, dog_name, energy_level) {
     // use hashing to create the password_digest
     const password_digest = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
-  
+
     // put it into the table created
     const sql = `
       INSERT INTO users(name, email, password_digest, dog_name, energy_level)
@@ -48,12 +48,13 @@ const User = {
       })
   },
 
-  selectPark(park) {
-    const sql = `INSERT INTO users(park_id) 
-    VALUES($1) 
-    RETURNING *;`
+  selectPark(park, id) {
+    const sql = `UPDATE users
+    SET park_id = $1 
+    WHERE id = $2;
+    `
 
-    return db.query(sql, [park])
+    return db.query(sql, [park, id])
       .then(dbResponse => {
         // this will return just the user we want -> promise chaining
         return dbResponse.rows[0]
@@ -78,4 +79,3 @@ const User = {
 
 
 module.exports = User
-  

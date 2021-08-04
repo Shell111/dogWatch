@@ -1,8 +1,8 @@
 // if this isn't Heroku -> then require dotenv and if heroku, skip this step
 // dotenv -> to access the env file 
-if(process.env.NODE_ENV !== 'production'){
+if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
-}  
+}
 
 const express = require('express')
 // to see if a user is logged_in? -> enabled the user to stay logged in for a period of time without logging them out and useful for user verification 
@@ -16,15 +16,15 @@ const session = require('express-session')
 
 // session in Ruby auto comes with cookie -> need to do BHS in js
 const sessionConfig = {
-  secret : process.env.SESSION_SECRET,
-  cookie : {},
+  secret: process.env.SESSION_SECRET,
+  cookie: {},
   saveUninitialized: false,
   resave: false,
 }
 
 // make it so that you can use a secure HTTPS instead of HTTP (less secure)
 // cookies are encrypted -> session_secret similar to salting on passwords 
-if(process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === 'production') {
   sessionConfig.cookie.secure = true;
   // app.set('trust proxy', 1); // not sure if strictly required
 }
@@ -49,7 +49,7 @@ app.listen(port, () => {
   console.log(`listening on port ${port}`)
 })
 
-// app.use(logger)
+app.use(logger)
 // //    |
 // //    V
 // // (middleware) builtin mini router for static files

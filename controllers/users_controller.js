@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   console.log('test')
-  User  
+  User
     .countDogs()
     .then(dogs => res.json(dogs))
 })
@@ -23,19 +23,21 @@ router.post('/', (req, res) => {
       req.body.energy_level)
     .then(user => {
       res.json(user);
-  });
+    });
 })
 
-// router.post('/', (req, res) => {
-//   User  
-//     .selectPark(req.body.park_id)
-//     .then(park => res.json(park))
-// })
-  
+router.post('/select-park', (req, res) => {
+  console.log(req.body)
+  if (req.session.userId) {
+    User
+      .selectPark(req.body.parkId, req.session.userId)
+      .then(park => res.json(park))
+  }
+})
 
 //     // Take user thats logged in, take their ID 
 //     // 
-    
+
 
 
 

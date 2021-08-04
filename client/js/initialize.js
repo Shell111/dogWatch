@@ -34,11 +34,11 @@ axios.get('/api/sessions')
                 .innerHTML = 'Logged in ' + sessionInfo.data.userId + '<button id="logout">Logout</button';
 
             // Make Logout button do a delete request to sessions api
-            // document.querySelector('#logout').addEventListener('click', event => {
-            //     axios.delete('/api/sessions').then(() => {
-            //         window.location.reload();
-            //     });
-            // })
+            document.querySelector('#logout').addEventListener('click', event => {
+                axios.delete('/api/sessions').then(() => {
+                    window.location.reload();
+                });
+            })
         } else {
             // Not logged in
             document.querySelector('#header')
@@ -52,5 +52,3 @@ axios.get('/api/sessions')
         // login page
     //})
 
-
-  

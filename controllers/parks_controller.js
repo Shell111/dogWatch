@@ -10,7 +10,7 @@ const router = express.Router()
 // find all the treasures then take them and pass them on back to browser as JSON
 router.get('/', (req, res) => {
   console.log('test')
-  Park  
+  Park
     .findAll()
     .then(parks => res.json(parks))
 })
