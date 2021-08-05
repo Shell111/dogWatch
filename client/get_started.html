@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-  <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" ></script>
+  <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" async></script>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="./css/common.css">
@@ -106,31 +106,9 @@ loginForm.addEventListener('submit', event => {
         // .catch(errorResponse =>{
         //     // console.log(errorResponse);
         //     document.querySelector('#errors')
-        //         .innerHTML = errorResponse.response.data.message;
-         
+        //         .innerHTML = errorResponse.response.data.message;  
 })
 
-
-
-
-
-
-
-
-  // const signUpForm = document.querySelector('#sign-up-form')
-  // signUpForm.addEventListener('submit', event => {
-  //     event.preventDefault();
-  //     const data = Object.fromEntries(new FormData(signUpForm));
-  //     axios.post('/api/users', data)
-  //       .then(successResponse => 
-  //         // console.log(sessionInfo);
-  //         // if (sessionInfo.data.error) {
-  //         //     // Update DOM to display error message
-  //         // } else {
-  //             window.location = '/'
-  //         // }
-  //     )
-  // })
 </script>
 
 </body>

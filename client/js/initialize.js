@@ -1,5 +1,6 @@
 const state = {
   userId: null,
+  userNames: [],
   parks: [],
   users: [],
   // these coordinates are of Melb from Google Maps
@@ -8,7 +9,6 @@ const state = {
   bingMapsApiKey: ''
 }
 
-// function getParks() {
 axios.get('/api/parks')
   .then(parks => {
     parks.data.forEach(p => state.parks.push(p))
@@ -20,35 +20,47 @@ axios.get('/api/parks')
       })
     // console.log(state.parks)
   })
-// }
 
-// getParks()
+axios.get('/api/users/get-names')
+  .then(names => {
+    names.data.forEach(n => state.userNames.push(n))
+    // console.log(state.userNames)
+  })
 
 // Retrieve session information from the server
 axios.get('/api/sessions')
     .then(sessionInfo => {
+      console.log(state.userNames)
         if (sessionInfo.data.userId) {
-            state.userId = sessionInfo.data.userId;
-            // Logged in
-            document.querySelector('#header')
-                .innerHTML = 'Logged in ' + sessionInfo.data.userId + '<button id="logout">Logout</button';
+          state.userId = sessionInfo.data.userId
+          // Logged in
+          // for(let i=0; i<state.userNames.length; i++) {
+          //   // console.log(state.userNames[i].id)
+          //   if(state.userNames[i].id == sessionInfo.data.userId) {
+          //     document.querySelector('#header')
+          //       .innerHTML = state.userNames[i].name + ' has logged in' + '<button id="logout">Logout</button'
+          //   }
+          // }
+          
+          document.querySelector('#header')
+          .innerHTML = 'You have logged in' + '<button id="logout">Logout</button'
 
-            // Make Logout button do a delete request to sessions api
-            document.querySelector('#logout').addEventListener('click', event => {
-                axios.delete('/api/sessions').then(() => {
-                    window.location.reload();
-                });
-            })
-        } else {
-            // Not logged in
-            document.querySelector('#header')
-                .innerHTML = 'Not logged in <a href="/login.html">Login</a>';
-            // Do whatever you want
-        }
-    })//.catch(error=>{
+          // Make Logout button do a delete request to sessions api
+          const logoutId= document.querySelector('#logout')
+          
+          logoutId.addEventListener('click', event => {
+            event.preventDefault();
+
+          const userId = sessionInfo.data.userId
+          // console.log(userId)
+
+          axios.delete('/api/sessions', { userId })
+            .then(() => {window.location = '/'})
+          })
+        } //.catch(error=>{
         // You might return a 401 error response instead,
         // if the user must be logged in for this page
         // You can handle it here and redirect the user to the
         // login page
-    //})
+    })
 

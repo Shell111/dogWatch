@@ -7,11 +7,19 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  console.log('test')
+  // console.log('test')
   User
     .countDogs()
     .then(dogs => res.json(dogs))
 })
+
+router.get('/get-names', (req, res) => {
+  // console.log('test')
+  User
+    .getNames()
+    .then(names => res.json(names))
+})
+
 
 router.post('/', (req, res) => {
   User
@@ -34,11 +42,6 @@ router.post('/select-park', (req, res) => {
       .then(park => res.json(park))
   }
 })
-
-//     // Take user thats logged in, take their ID 
-//     // 
-
-
 
 
 module.exports = router;

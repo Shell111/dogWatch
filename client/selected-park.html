@@ -8,6 +8,9 @@
 
   <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+  <script src="./js/park_map.js" defer ></script>
+  <script src="./js/index.js" defer ></script>
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="./js/initialize.js" defer></script>
   <script src="./js/index.js" defer></script>
@@ -17,25 +20,35 @@
   <link rel="stylesheet" href="./css/footer.css">
   <link rel="stylesheet" href="./css/selected-park.css">
 
-
+  <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=initializeParkMap' defer></script>
 
   <title>Document</title>
 </head>
 
 <body>
 
-  <h1 id="header">Loading</h1>
+  <h1 id="header"></h1>
 
   <!-- SPECIFIC PARK SECTION -->
   <section class="layout">
 
-    <!-- THIS WILL BE A JS FILE SECTION -->
-    <!--  Is this a select box for the parks?  -->
-    <section class="category">
+    <section class="logo-and-nav">
+      <h1><span class="dog-text">DOG</span> WATCH</h1>
+      <header id="header-nav" class="header-nav">
+        <nav>
+          <ul>
+            <li><a href="">About</a></li>
+            <li><a href="">Profile</a></li>
+          </ul>
+        </nav>
+      </header>
+    </section>
+
+    <section class="selected-park">
       <form id='park-selection' class="park-selection" action='/' method='POST'>
         <!-- <label for="parks">Category:</label> -->
-        <select name="park" id="category_select" required>
-          <option value="">--Please choose a park--</option>
+        <select name="park" id="parks" required>
+          <option value="">--Choose a park:--</option>
           <option value="1">Shore Reserve</option>
           <option value="2">Jacobs Reserve</option>
           <option value="3">Dunstan Reserve</option>
@@ -43,27 +56,9 @@
       </form>
     </section>
 
-
-
-
-    <!-- <section class="selected-park">
-        <form class="park-selection" id='park-selection' action='/' method='POST'>
-          <label for="parks">Choose a park:</label><br>
-          <select id="parks" name="parks">
-            <option value="shore-reserve">Shore Reserve</option>
-            <option value="jacobs-reserve">Jacobs Reserve</option>
-            <option value="dunstan-reserve">Dunstan Reserve</option>
-          </select><br>
-          <input class="selected-park" type="submit">
-        </form>
-      </section> -->
-
-
-
     <!-- MAP DISPLAY -->
 
     <main id="parks-map" class="parks-map">
-      <img class="screenshot" src="./images/bing-map-screenshot.png" alt="">
     </main>
 
     <section id="selected-park-display" class="selected-park-display">
@@ -91,30 +86,35 @@
         <div>
           <span class="material-icons navigate_next">navigate_next</span>
         </div>
-
       </div>
-
     </section>
+
+    <footer>
+      <h5>Footer placedholder text</h5>
+    </footer>
+
   </section>
 
   <script>
     const parkSelection = document.querySelector('#park-selection')
 
     parkSelection.addEventListener('change', event => {
-      event.preventDefault();
+      event.preventDefault()
 
       const data = Object.fromEntries(new FormData(parkSelection));
-      console.log(typeof data.park)
+      // console.log(typeof data.park)
       const parkId = Number(data.park)
-      console.log(parkId)
+      // console.log(parkId)
 
       axios.post('/api/users/select-park', { parkId })
-        .then(successResponse => window.location = '/selected-park.html')
+        .then(() => {
+          document.getElementById('parks').setAttribute('disabled', 'disabled')
+        })
+        // .then(successResponse => window.location = '/selected-park.html')
       // .catch(errorResponse =>{
       //     // console.log(errorResponse);
       //     document.querySelector('#errors')
       //         .innerHTML = errorResponse.response.data.message;
-
     })
   </script>
 

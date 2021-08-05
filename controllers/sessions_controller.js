@@ -34,20 +34,14 @@ router.get('/', (req, res) => {
 
 // logout - delete
 router.delete('/', (req, res) => {
-  req.session.destroy() // remove/reset the session
-  res.json({})
+  if (req.session.userId) {
+    User
+      .logout(req.session.userId)
+      .then(() => {
+        req.session.destroy() // remove/reset the session
+        res.json({})
+      })
+  }
 })
-
-
-
-// router.post('/', (req, res) => {
-
-
-
-//   //     // Take user thats logged in, take their ID 
-//   //     // 
-
-
-// })
 
 module.exports = router
