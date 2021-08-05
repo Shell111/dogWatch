@@ -1,9 +1,13 @@
 #parks-map {
+  margin: 20px 0 0 0;
   position: relative;
   height: 40vh;
-  filter:saturate(2);
-  /* filter: hue-rotate(-150deg); */
+  filter:saturate(1.5);
+  border-radius: 20px 20px 20px 20px;
+  overflow: hidden;
+  /* filter: hue-rotate(30deg); */
   /* filter: hue-rotate(200deg); */
+  /* filter:grayscale(90%); */
 }
 
 /* Map screenshot */

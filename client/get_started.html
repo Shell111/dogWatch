@@ -7,6 +7,9 @@
  
   <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" async></script>
 
+  <script src="./js/header_nav.js" defer ></script>
+  <script src="./js/about.js" defer ></script>
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/navigation.css">
@@ -21,6 +24,12 @@
 <body>
 
   <section class="layout">
+
+    <section id="logo-and-nav" class="logo-and-nav"></section>
+
+    <!-- SECTION FOR ABOUT ELEMENT TO COME IN VIA DOM -->
+    <section id="page" class="content"></section>
+
     <section class="log-in-header">
       <h3>Have an account?</h3>
       <p>Sign in with your Email Address</p>
@@ -30,13 +39,13 @@
       <form id='log-in-form' class="log-in-form"  action='/sessions' method='POST'>
         <section id="errors"></section>
           <fieldset>
-            <!-- <label for="">Email Address:</label><br> -->
             <input type="text" name='email' placeholder="Email Address">
           </fieldset>
+          
           <fieldset>
-            <!-- <label for="">Password:</label><br> -->
             <input type="password" name='password'  placeholder="Password">
           </fieldset>
+
           <a href="">Forgotten password</a>
           <button class="sign-in-btn">Sign in</button>
       </form>
@@ -51,25 +60,25 @@
       <form id="sign-up-form" class="sign-up-form" action='/users' method='POST'>
         <section id="errors"></section>
           <fieldset>
-            <!-- <label for="">First Name:</label><br> -->
             <input type="text" name='name' placeholder="First Name">
           </fieldset>
+
           <fieldset>
-            <!-- <label for="">Email Address:</label><br> -->
             <input type="text" name='email' placeholder="Email Address">
           </fieldset>
+
           <fieldset>
-            <!-- <label for="">Create Password:</label><br> -->
-            <input type="password" name='password' placeholder="Create Passworrd">
+            <input type="password" name='password' placeholder="Create Password">
           </fieldset>
+
           <fieldset>
-            <!-- <label for="">Dog Name:</label><br> -->
             <input type="text" name='dog_name' placeholder="Dog Name">
           </fieldset>
+
           <fieldset>
-            <!-- <label for="">Dog Energy Level:</label><br> -->
             <input type="text" name='energy_level' placeholder="Energy Level">
           </fieldset>
+          
           <button class="create-account-btn">Create an account</button>
       </form>
     </section>
