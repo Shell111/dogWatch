@@ -45,6 +45,13 @@ axios.get('/api/sessions')
           document.querySelector('#header')
           .innerHTML = 'You have logged in' + '<button id="logout">Logout</button'
 
+          // When a user logs in we need to hide the get-started
+          document.querySelector('#get-started').style.display = "none"
+
+          // When a user logs in we need to show the select-park-drop-down
+          document.querySelector('#select-park-drop-down').style.display = "block"
+          
+
           // Make Logout button do a delete request to sessions api
           const logoutId= document.querySelector('#logout')
           

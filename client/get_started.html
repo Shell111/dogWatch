@@ -28,6 +28,7 @@
     <section id="logo-and-nav" class="logo-and-nav"></section>
 
     <!-- SECTION FOR ABOUT ELEMENT TO COME IN VIA DOM -->
+    <section id="about-page" class="about-content"></section>
     <section id="page" class="content"></section>
 
     <section class="log-in-header">
@@ -111,7 +112,11 @@ loginForm.addEventListener('submit', event => {
 
     const data = Object.fromEntries(new FormData(loginForm));
     axios.post('/api/sessions', data)
-        .then(successResponse => window.location = '/selected-park.html')
+        .then(successResponse => window.location = '/')
+
+
+        // .then(successResponse => window.location = '/selected-park.html')
+
         // .catch(errorResponse =>{
         //     // console.log(errorResponse);
         //     document.querySelector('#errors')
