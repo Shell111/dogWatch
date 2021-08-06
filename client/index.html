@@ -12,10 +12,14 @@
     <script src="./js/initialize.js" defer ></script>
     <script src="./js/park_map.js" defer ></script>
     <script src="./js/index.js" defer ></script>
+    <script src="./js/header_nav.js" defer ></script>
+    <script src="./js/about.js" defer ></script>
+    <script src="./js/select-park.js" defer ></script>
+
     <link rel="stylesheet" href="./css/park.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/selected-park.css">
+    <link rel="stylesheet" href="./css/select-park.css">
     <link rel="stylesheet" href="./css/navigation.css">
     <!-- <link rel="stylesheet" href="./css/get_started.css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -24,11 +28,14 @@
     
 </head>
 <body>
-  <h1 id="header"></h1>
-
+ 
   <section class="layout">
-    <section class="logo-and-nav">
-      <h1><span class="dog-text">DOG</span> WATCH</h1>
+    <!-- HEADER ID & WITH LOGGED IN INFO MOVED TO DOM header_nav.js-->
+    <!-- <p id="header"></p> -->
+
+    <section id="logo-and-nav" class="logo-and-nav">
+
+      <!-- <h1><span class="dog-text">DOG</span> WATCH</h1>
       <header id="header-nav" class="header-nav">
         <nav>
           <ul>
@@ -36,16 +43,19 @@
             <li><a href="">Profile</a></li>
           </ul>
         </nav>
-      </header>
+      </header> -->
     </section>
     
     <section class="get-started">
       <p>Let’s get you started and check out all the parks?</p>
       <button id="get-started" class="get-started-btn"><a href="/get_started.html">Get Started</a></button>
     </section>
+
+    <!-- ABOVE MAP DISPLAY -->
+    <!-- SECTION FOR ABOUT ELEMENT TO COME IN VIA DOM -->
+    <section id="page" class="content"></section>
     
     <!-- MAP DISPLAY -->
-
     <main id="parks-map" class="parks-map">
     </main>
   
