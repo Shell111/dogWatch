@@ -75,5 +75,5 @@ app.use('/api/bing', bingController)
 // //    |
 // //    V
 // //--handle any errors that are thrown _anywhere_ in the stack of middlewares
-// app.use(errorHandler)
+app.use(errorHandler)
 

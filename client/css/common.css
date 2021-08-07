@@ -22,9 +22,9 @@ body {
 }
 
 /* Kasun had this error css in the common file */
-#errors {
-  font-weight: bold;
+#sign-in-error, #sign-up-error {
   color: red;
+  font-size: 0.85em;
 }
 
 .hide {

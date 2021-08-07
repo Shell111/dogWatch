@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+
   <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" async></script>
 
-  <script src="./js/header_nav.js" defer ></script>
-  <script src="./js/about.js" defer ></script>
+  <script src="./js/header_nav.js" defer></script>
+  <script src="./js/about.js" defer></script>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="./css/common.css">
@@ -21,6 +22,7 @@
 
   <title>Document</title>
 </head>
+
 <body>
 
   <section class="layout">
@@ -37,18 +39,18 @@
     </section>
 
     <section class="sign-in-forms">
-      <form id='log-in-form' class="log-in-form"  action='/sessions' method='POST'>
-        <section id="errors"></section>
-          <fieldset>
-            <input type="text" name='email' placeholder="Email Address">
-          </fieldset>
-          
-          <fieldset>
-            <input type="password" name='password'  placeholder="Password">
-          </fieldset>
+      <form id='log-in-form' class="log-in-form" action='/sessions' method='POST'>
+        <section id="sign-in-error"></section>
+        <fieldset>
+          <input type="text" name='email' placeholder="Email Address">
+        </fieldset>
 
-          <a href="">Forgotten password</a>
-          <button class="sign-in-btn">Sign in</button>
+        <fieldset>
+          <input type="password" name='password' placeholder="Password">
+        </fieldset>
+
+        <a href="">Forgotten password</a>
+        <button class="sign-in-btn">Sign in</button>
       </form>
     </section>
 
@@ -59,71 +61,80 @@
 
     <section class="sign-in-forms">
       <form id="sign-up-form" class="sign-up-form" action='/users' method='POST'>
-        <section id="errors"></section>
-          <fieldset>
-            <input type="text" name='name' placeholder="First Name">
-          </fieldset>
+        <section id="sign-up-error"></section>
+        <fieldset>
+          <input type="text" name='name' placeholder="First Name">
+        </fieldset>
 
-          <fieldset>
-            <input type="text" name='email' placeholder="Email Address">
-          </fieldset>
+        <fieldset>
+          <input type="text" name='email' placeholder="Email Address">
+        </fieldset>
 
-          <fieldset>
-            <input type="password" name='password' placeholder="Create Password">
-          </fieldset>
+        <fieldset>
+          <input type="password" name='password' placeholder="Create Password">
+        </fieldset>
 
-          <fieldset>
-            <input type="text" name='dog_name' placeholder="Dog Name">
-          </fieldset>
+        <fieldset>
+          <input type="text" name='dog_name' placeholder="Dog Name">
+        </fieldset>
 
-          <fieldset>
-            <input type="text" name='energy_level' placeholder="Energy Level">
-          </fieldset>
-          
-          <button class="create-account-btn">Create an account</button>
+        <fieldset>
+          <!-- <input type="" name='energy_level' placeholder="Energy Level"> -->
+
+          <select name="energy_level" id="energy_level" class="energy_level" required>
+            <option value="">Energy Level</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </fieldset>
+
+        <button class="create-account-btn">Create an account</button>
       </form>
     </section>
 
     <footer>
       <h5>Footer placedholder text</h5>
     </footer>
-</section>
-  
-<script>
-const signUpForm = document.querySelector('#sign-up-form')
+  </section>
 
-signUpForm.addEventListener('submit', event => {
-    event.preventDefault();
+  <script>
+    const signUpForm = document.querySelector('#sign-up-form')
 
-    const data = Object.fromEntries(new FormData(signUpForm));
-    axios.post('/api/users', data)
+    signUpForm.addEventListener('submit', event => {
+      event.preventDefault();
+
+      const data = Object.fromEntries(new FormData(signUpForm));
+      axios.post('/api/users', data)
         .then(successResponse => window.location = '/')
-        // .catch(errorResponse =>{
-        //     // console.log(errorResponse);
-        //     document.querySelector('#errors')
-        //         .innerHTML = errorResponse.response.data.message;
-         
-})
+        .catch(errorResponse => {
+          console.log(errorResponse.response);
+          document.querySelector('#sign-up-error')
+            .innerHTML = errorResponse.response.data.message;
 
-const loginForm = document.querySelector('#log-in-form')
+        })
+    })
 
-loginForm.addEventListener('submit', event => {
-    event.preventDefault();
+    const loginForm = document.querySelector('#log-in-form')
 
-    const data = Object.fromEntries(new FormData(loginForm));
-    axios.post('/api/sessions', data)
+    loginForm.addEventListener('submit', event => {
+      event.preventDefault();
+
+      const data = Object.fromEntries(new FormData(loginForm));
+      axios.post('/api/sessions', data)
         .then(successResponse => window.location = '/')
 
 
-        // .then(successResponse => window.location = '/selected-park.html')
 
-        // .catch(errorResponse =>{
-        //     // console.log(errorResponse);
-        //     document.querySelector('#errors')
-        //         .innerHTML = errorResponse.response.data.message;  
-})
+        .catch(errorResponse => {
+          // console.log(errorResponse);
+          document.querySelector('#sign-in-error')
+            .innerHTML = errorResponse.response.data.message;
 
-</script>
+        })
+    })
+  </script>
 
 </body>
+
 </html>

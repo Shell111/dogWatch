@@ -29,45 +29,41 @@ axios.get('/api/users/get-names')
 
 // Retrieve session information from the server
 axios.get('/api/sessions')
-    .then(sessionInfo => {
-      console.log(state.userNames)
-        if (sessionInfo.data.userId) {
-          state.userId = sessionInfo.data.userId
-          // Logged in
-          // for(let i=0; i<state.userNames.length; i++) {
-          //   // console.log(state.userNames[i].id)
-          //   if(state.userNames[i].id == sessionInfo.data.userId) {
-          //     document.querySelector('#header')
-          //       .innerHTML = state.userNames[i].name + ' has logged in' + '<button id="logout">Logout</button'
-          //   }
-          // }
-          
-          document.querySelector('#header')
-          .innerHTML = 'You have logged in' + '<button id="logout">Logout</button'
+  .then(sessionInfo => {
+    // console.log(state.userNames)
+    if (sessionInfo.data.userId) {
+      state.userId = sessionInfo.data.userId
 
-          // When a user logs in we need to hide the get-started
-          document.querySelector('#get-started').style.display = "none"
+      document.querySelector('#header')
+        .innerHTML = '<button id="logout">Logout</button'
 
-          // When a user logs in we need to show the select-park-drop-down
-          document.querySelector('#select-park-drop-down').style.display = "block"
-          
+      document.querySelector('#welcome-message')
+        .innerHTML = 'Welcome. You have logged in! Time to select a park down below!'
 
-          // Make Logout button do a delete request to sessions api
-          const logoutId= document.querySelector('#logout')
-          
-          logoutId.addEventListener('click', event => {
-            event.preventDefault();
+      // When a user logs in we need to hide the get-started
+      document.querySelector('#get-started').style.display = "none"
 
-          const userId = sessionInfo.data.userId
-          // console.log(userId)
+      // When a user logs in we need to show the select-park-drop-down
+      document.querySelector('#select-park-drop-down').style.display = "block"
 
-          axios.delete('/api/sessions', { userId })
-            .then(() => {window.location = '/'})
-          })
-        } //.catch(error=>{
-        // You might return a 401 error response instead,
-        // if the user must be logged in for this page
-        // You can handle it here and redirect the user to the
-        // login page
-    })
+
+      // Make Logout button do a delete request to sessions api
+      const logoutId = document.querySelector('#logout')
+
+      logoutId.addEventListener('click', event => {
+        event.preventDefault();
+
+        const userId = sessionInfo.data.userId
+        // console.log(userId)
+
+        axios.delete('/api/sessions', { userId })
+          .then(() => { window.location = '/' })
+      })
+    } //.catch(error=>{
+    // You might return a 401 error response instead,
+    // if the user must be logged in for this page
+    // You can handle it here and redirect the user to the
+    // login page
+  })
+
 

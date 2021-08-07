@@ -19,30 +19,31 @@ function parks() {
             <p>${users(park.id)} dogs checked in</p>
           </div>
           <div>
-            <a href="/get_started.html"><span class="material-icons navigate_next">navigate_next</span></a>
           </div>
       </div>`
-      ).join('')
+  ).join('')
 }
 
+/* <a href="/get_started.html"><span class="material-icons navigate_next">navigate_next</span></a> */ 
+
 function users(park_id) {
-  for(let i=0; i<state.users.length; i++){
-    console.log(state.users)
-    console.log(state.parks)
-    
-    if(state.users.length < state.parks.length) {
+  for (let i = 0; i < state.users.length; i++) {
+    // console.log(state.users)
+    // console.log(state.parks)
+
+    if (state.users.length < state.parks.length) {
       var parksId = state.parks.map(e => e.id)
       var usersId = state.users.map(f => f.id)
-      var absent = parksId.filter(e => 
+      var absent = parksId.filter(e =>
         !usersId.includes(e)
       )
-      console.log(typeof absent[0])
-      state.users.push({park_id: absent[0], count: "0", id: absent[0]})
-      console.log(state.users)
-    } 
-    if(state.users[i].park_id === park_id) {
+      // console.log(typeof absent[0])
+      state.users.push({ park_id: absent[0], count: "0", id: absent[0] })
+      // console.log(state.users)
+    }
+    if (state.users[i].park_id === park_id) {
       return state.users[i].count
-    } 
+    }
   }
 }
 

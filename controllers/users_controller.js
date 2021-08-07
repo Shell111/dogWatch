@@ -1,8 +1,7 @@
 const User = require('../models/user')
 
-console.log('hello1')
-
 const express = require('express')
+const validateUser = require('../middlewares/users/validate_user')
 
 const router = express.Router()
 
@@ -20,8 +19,7 @@ router.get('/get-names', (req, res) => {
     .then(names => res.json(names))
 })
 
-
-router.post('/', (req, res) => {
+router.post('/', validateUser.validateSignUpUser, (req, res) => {
   User
     .createUser(
       req.body.name,
@@ -30,6 +28,7 @@ router.post('/', (req, res) => {
       req.body.dog_name,
       req.body.energy_level)
     .then(user => {
+      req.session.userId = user.id
       res.json(user);
     });
 })

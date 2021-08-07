@@ -3,12 +3,14 @@ const User = require('../models/user')
 
 const express = require('express')
 const bcrypt = require('bcrypt')
+const validateUser = require('../middlewares/users/validate_user')
+
 
 const router = express.Router()
 
 
 // login - create
-router.post('/', (req, res) => {
+router.post('/', validateUser.validateLoginUser, (req, res) => {
 
   // req.session.userId = 2
   // res.json(req.body.password)
