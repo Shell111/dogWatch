@@ -8,6 +8,7 @@ const express = require('express')
 // to see if a user is logged_in? -> enabled the user to stay logged in for a period of time without logging them out and useful for user verification 
 const session = require('express-session')
 
+const app = express()
 
 // Optional if you want to use EJS to build the base of your app
 // Still use your API in the front end as much as possible
@@ -26,7 +27,7 @@ const sessionConfig = {
 // cookies are encrypted -> session_secret similar to salting on passwords 
 if (process.env.NODE_ENV === 'production') {
   sessionConfig.cookie.secure = true;
-  // app.set('trust proxy', 1); // not sure if strictly required
+  app.set('trust proxy', 1); // not sure if strictly required
 }
 
 // middlewares
@@ -39,7 +40,6 @@ const sessionsController = require('./controllers/sessions_controller.js')
 const parksController = require('./controllers/parks_controller.js')
 const bingController = require('./controllers/bing_controller.js')
 
-const app = express()
 
 // process.env.PORT is for Heroku and 3000 is for local access
 const port = process.env.PORT || 3000
