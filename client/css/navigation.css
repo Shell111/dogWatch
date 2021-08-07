@@ -3,13 +3,12 @@
 .logo-and-nav {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items:baseline;
   border-bottom: 1px solid #E5E5E5;
   margin-bottom: 0;
 }
 
 /* navigation  */
-
 .header-nav nav ul {
   display: flex;
   /* justify-content: flex-end; */
@@ -18,7 +17,7 @@
 }
 
 .header-nav nav li {
-  padding: 0 0.5em;
+  padding: 0 8px;
   justify-content: space-between;
   cursor: pointer;
 }
@@ -28,14 +27,17 @@
 }
 
 .header-nav nav li a {
-  text-decoration: none;
+  text-decoration:none;
+  margin-top: 0px;
+  font-size: 1.01em; 
 }
 
 .header button {
   background-color: white;
   text-transform: uppercase;
   cursor: pointer;
-  border: 2px solid #F1B13A;
+  border: none;
+  padding:none;
 }
 
 .header button:hover {
@@ -73,7 +75,6 @@ h1 {
   font-size: .85em;
 }
 
-
 .get-started-btn {
   background: #F1B13A;
   border-radius: 8px;
@@ -83,6 +84,7 @@ h1 {
   box-shadow: 2px 5px 5px rgb(235, 234, 233);
   transition: ease-in-out .4s;
 }
+
 .get-started-btn:hover {
   box-shadow:none;
 }

@@ -54,8 +54,8 @@ const User = {
       SELECT id, name, dog_name FROM users;`
 
     return db
-    .query(sql)
-    .then(dbRes => dbRes.rows)
+      .query(sql)
+      .then(dbRes => dbRes.rows)
   },
 
   selectPark(park, id) {

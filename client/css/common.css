@@ -10,18 +10,18 @@ body {
   margin:0; 
   width:100%;
   overflow-x: hidden;
+  background-image: url("../images/background_image1.png");
+  background-color:#f1b13a18;  
 }
 
 /* container for phone sizing */
-
 .layout {
   max-width: 370px;
   margin: 0 auto;
-  border: 1px solid lightgray;
   padding: 0 15px;
+  background-color: white;
 }
 
-/* Kasun had this error css in the common file */
 #sign-in-error, #sign-up-error {
   color: red;
   font-size: 0.85em;
@@ -32,9 +32,13 @@ body {
 }
 
 /* Font sizing */
-
 h1 {
   font-size: 1.5em;
+}
+
+h1:hover  {
+  border-bottom: 2px solid #F1B13A;
+  cursor: pointer;
 }
 
 h2 {
@@ -49,6 +53,12 @@ h3 {
 
 h5 {
   font-weight: 300;
+}
+
+h4 {
+  margin-top: 20px;
+  font-weight: 300;
+  font-size: 0.85em;
 }
 
 p {
@@ -67,3 +77,4 @@ a:visited {
 img {
   max-width: 100%
 }
+

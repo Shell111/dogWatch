@@ -1,14 +1,10 @@
-
 .select-park-drop-down {
   display: none;
 }
 
 .select-park {
-  margin: 40px 0 0 0;
+  margin: 20px 0 0 0;
   display: flex;
-  /* flex-direction: column;
-  align-items: center; */
-  /* justify-items: center; */
   justify-content: center;
 }
 
@@ -18,23 +14,9 @@
   border-radius: 7px;
 }
 
-.select-park input {
-  background: #F1B13A;
-  border-radius: 12px;
-  width: 300px;
-  height: 44px;
-  border: none;
-  box-shadow: 2px 5px 5px rgb(235, 234, 233);
-  transition: ease-in-out .4s;
-  margin: 10px 0 0 0;
-  display: flex;
-  justify-content: center;
-}
+/* Extra Features down below for NewsFeed */
 
-.select-park:hover {
-  box-shadow:none;
-}
-
+/*
 .chosen-park-btn {
     background: #F1B13A;
     border-radius: 12px;
@@ -53,7 +35,7 @@
 .select-park-info {
   /* display: flex;
   justify-content: space-evenly; */
-  display: grid;
+  /* display: grid;
   grid-template-columns: 15% 75% 1fr;
   margin: 10px 0;
   border-bottom: 1px solid #E5E5E5
@@ -68,4 +50,5 @@
 .select-park-info p {
   margin: 2px 0 10px 0;
   padding: 0;
-}
+} */ 
+

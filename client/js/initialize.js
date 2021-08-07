@@ -9,18 +9,6 @@ const state = {
   bingMapsApiKey: ''
 }
 
-axios.get('/api/parks')
-  .then(parks => {
-    parks.data.forEach(p => state.parks.push(p))
-    axios.get('/api/users')
-      .then(users => {
-        users.data.forEach(u => state.users.push(u))
-        renderParksList()
-        // console.log(users.data)
-      })
-    // console.log(state.parks)
-  })
-
 axios.get('/api/users/get-names')
   .then(names => {
     names.data.forEach(n => state.userNames.push(n))
@@ -28,7 +16,7 @@ axios.get('/api/users/get-names')
   })
 
 // Retrieve session information from the server
-axios.get('/api/sessions')
+const sessionRequest = axios.get('/api/sessions')
   .then(sessionInfo => {
     // console.log(state.userNames)
     if (sessionInfo.data.userId) {
@@ -38,14 +26,13 @@ axios.get('/api/sessions')
         .innerHTML = '<button id="logout">Logout</button'
 
       document.querySelector('#welcome-message')
-        .innerHTML = 'Welcome. You have logged in! Time to select a park down below!'
+        .innerHTML = 'Welcome! Time to select a park!'
 
       // When a user logs in we need to hide the get-started
       document.querySelector('#get-started').style.display = "none"
 
       // When a user logs in we need to show the select-park-drop-down
       document.querySelector('#select-park-drop-down').style.display = "block"
-
 
       // Make Logout button do a delete request to sessions api
       const logoutId = document.querySelector('#logout')
@@ -59,11 +46,27 @@ axios.get('/api/sessions')
         axios.delete('/api/sessions', { userId })
           .then(() => { window.location = '/' })
       })
-    } //.catch(error=>{
-    // You might return a 401 error response instead,
-    // if the user must be logged in for this page
-    // You can handle it here and redirect the user to the
-    // login page
+    }
   })
+  
+const parksRequest = axios.get('/api/parks')
+const userRequest = axios.get('/api/users')
 
+axios.all([parksRequest, userRequest, sessionRequest])
+  .then(axios.spread(function (parks, users) {
+    // There is result of sessions request but its currently undefined for reasons we don't care aboout
+    parks.data.forEach(p => state.parks.push(p))
+    users.data.forEach(u => state.users.push(u))
+    renderParksList()
+  }))
 
+// Thats the breakfown of Axios.All
+// axios.get('/api/parks')
+//       .then(parks => {
+//         parks.data.forEach(p => state.parks.push(p))
+//         axios.get('/api/users')
+//           .then(users => {
+//             users.data.forEach(u => state.users.push(u))
+//             renderParksList()
+//         })
+//  })

@@ -3,7 +3,7 @@ async function initializeParkMap() {
   axios.get('/api/bing')
     .then(response => {
       state.bingMapsApiKey = response.data
-      // collecting all the data made by the users and put it into the array of treasures so that the data can be used in code - CLIENT SIDE (frontend)
+      // collecting all the data made by the users and put it into the array of parks so that the data can be used in code - CLIENT SIDE (frontend)
       // now we need to go back to the controller and write a backend route to receive this data
       // only want to call the Microsoft map once the API Key is called
       const center = state.userPosition
@@ -16,15 +16,12 @@ async function initializeParkMap() {
           park.data.forEach(p => addParkPin(p))
           // park.data.forEach(p => state.parks.push(p))
           // console.log(state.parks)
-
         })
     })
 }
 
-
-
-  //Center the map on the user's location.
-  // map.setView({ center: loc, zoom: 15 });
+//Center the map on the user's location.
+// map.setView({ center: loc, zoom: 15 });
 
 function addParkPin(park) {
   const { name, address, lat, lng } = park

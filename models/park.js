@@ -10,18 +10,7 @@ const Park = {
     return db
       .query(sql)
       .then(dbRes => dbRes.rows)
-  },
-
-  // model file takes info from controller and implements it in the backend the returns back to user
-  // delete() {
-  //   const sql = `
-  //   DELETE FROM treasures WHERE id = $1
-  //   `
-  //   return db.query(sql, [id])
-  // }
+  }
 }
 
-
-
 module.exports = Park
-  

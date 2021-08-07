@@ -3,14 +3,12 @@ const User = require('../models/user')
 
 const express = require('express')
 const bcrypt = require('bcrypt')
-const validateUser = require('../middlewares/users/validate_user')
-
+const validation = require('../middlewares/users/validate_user')
 
 const router = express.Router()
 
-
 // login - create
-router.post('/', validateUser.validateLoginUser, (req, res) => {
+router.post('/', validation.validateUser.validateLoginUser, (req, res) => {
 
   // req.session.userId = 2
   // res.json(req.body.password)
@@ -24,7 +22,7 @@ router.post('/', validateUser.validateLoginUser, (req, res) => {
         res.json({ message: 'success' })
       } else {
         // error - user not found or wrong password
-        res.status(400).json({ error: "Incorrect username or password" })
+        res.status(400).json({ message: "Incorrect email or password" })
       }
     })
 })

@@ -10,11 +10,6 @@ const session = require('express-session')
 
 const app = express()
 
-// Optional if you want to use EJS to build the base of your app
-// Still use your API in the front end as much as possible
-// app.set('view engine', 'ejs')
-// app.set('views', './views')
-
 // session in Ruby auto comes with cookie -> need to do BHS in js
 const sessionConfig = {
   secret: process.env.SESSION_SECRET,
@@ -40,7 +35,6 @@ const sessionsController = require('./controllers/sessions_controller.js')
 const parksController = require('./controllers/parks_controller.js')
 const bingController = require('./controllers/bing_controller.js')
 
-
 // process.env.PORT is for Heroku and 3000 is for local access
 const port = process.env.PORT || 3000
 
@@ -60,7 +54,6 @@ app.use(express.static('client'))
 
 app.use(express.json())
 app.use(session(sessionConfig))
-
 // //    |
 // //    V
 // // routes (middleware)

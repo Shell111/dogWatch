@@ -18,13 +18,10 @@
   <link rel="stylesheet" href="./css/get_started.css">
   <link rel="stylesheet" href="./css/footer.css">
 
-
-
-  <title>Document</title>
+  <title>DogWatch - Get Started</title>
 </head>
 
 <body>
-
   <section class="layout">
 
     <section id="logo-and-nav" class="logo-and-nav"></section>
@@ -49,7 +46,7 @@
           <input type="password" name='password' placeholder="Password">
         </fieldset>
 
-        <a href="">Forgotten password</a>
+        <a href="#">Forgotten password</a>
         <button class="sign-in-btn">Sign in</button>
       </form>
     </section>
@@ -79,8 +76,6 @@
         </fieldset>
 
         <fieldset>
-          <!-- <input type="" name='energy_level' placeholder="Energy Level"> -->
-
           <select name="energy_level" id="energy_level" class="energy_level" required>
             <option value="">Energy Level</option>
             <option value="low">Low</option>
@@ -94,7 +89,7 @@
     </section>
 
     <footer>
-      <h5>Footer placedholder text</h5>
+      <h5><span>&copy</span> DogWatch</h5>
     </footer>
   </section>
 
@@ -111,7 +106,6 @@
           console.log(errorResponse.response);
           document.querySelector('#sign-up-error')
             .innerHTML = errorResponse.response.data.message;
-
         })
     })
 
@@ -123,14 +117,10 @@
       const data = Object.fromEntries(new FormData(loginForm));
       axios.post('/api/sessions', data)
         .then(successResponse => window.location = '/')
-
-
-
         .catch(errorResponse => {
           // console.log(errorResponse);
           document.querySelector('#sign-in-error')
             .innerHTML = errorResponse.response.data.message;
-
         })
     })
   </script>

@@ -1,7 +1,7 @@
 const User = require('../models/user')
 
 const express = require('express')
-const validateUser = require('../middlewares/users/validate_user')
+const validation = require('../middlewares/users/validate_user')
 
 const router = express.Router()
 
@@ -19,7 +19,7 @@ router.get('/get-names', (req, res) => {
     .then(names => res.json(names))
 })
 
-router.post('/', validateUser.validateSignUpUser, (req, res) => {
+router.post('/', validation.validateUser.validateSignUpUser, (req, res) => {
   User
     .createUser(
       req.body.name,
@@ -41,6 +41,5 @@ router.post('/select-park', (req, res) => {
       .then(park => res.json(park))
   }
 })
-
 
 module.exports = router;

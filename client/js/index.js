@@ -1,5 +1,3 @@
-// console.log('hello')
-
 function renderParksList() {
   document.querySelector('#park-news-feed').innerHTML = `
       <section class='parks-info'>
@@ -18,13 +16,14 @@ function parks() {
             <h2>${park.name}</h2>
             <p>${users(park.id)} dogs checked in</p>
           </div>
-          <div>
+
+          <div id="nav-next" class="${!state.userId ? 'hidden' : ''}">
+          <a href="/get_started.html"><span class="material-icons navigate_next">navigate_next</span></a> 
           </div>
+
       </div>`
   ).join('')
 }
-
-/* <a href="/get_started.html"><span class="material-icons navigate_next">navigate_next</span></a> */ 
 
 function users(park_id) {
   for (let i = 0; i < state.users.length; i++) {
@@ -45,5 +44,6 @@ function users(park_id) {
       return state.users[i].count
     }
   }
-}
+  return 0;
+} 
 

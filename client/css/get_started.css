@@ -5,7 +5,6 @@ fieldset {
 }
 
 /* Forms section for Flex */
-
 .sign-in-forms {
   display: flex;
   flex-direction: column;
@@ -13,7 +12,6 @@ fieldset {
 }
 
 /* Log in header section */
-
 .log-in-header h3 {
   margin-bottom: 5px; 
 }
@@ -23,7 +21,6 @@ fieldset {
 }
 
 /* Log in form and button */ 
-
 .log-in-form input {
   width: 340px;
   height: 44px;
@@ -61,12 +58,14 @@ fieldset {
   box-shadow: 2px 5px 5px rgb(235, 234, 233);
   transition: ease-in-out .4s;
 }
+
 .sign-in-btn:hover {
   box-shadow:none;
+  background: #f7d69b;
+  cursor: pointer;
 }
 
 /* Create account form header */ 
-
 .create-account-header h3 {
   margin: 30px 0 5px 0; 
 }
@@ -76,12 +75,10 @@ fieldset {
 }
 
 /* Sign up form and button */ 
-
 .sign-up-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .sign-up-form input {
@@ -91,7 +88,6 @@ fieldset {
   border: .5px solid #E5E5E5;
   box-shadow: 0 4px 4px #E5E5E5;
   padding-left: 10px;
-  
 }
 
 .create-account-btn {
@@ -104,8 +100,11 @@ fieldset {
   transition: ease-in-out .4s;
   margin: 10px 0 0 0;
 }
+
 .create-account-btn:hover {
   box-shadow:none;
+  background: #f7d69b;
+  cursor: pointer;
 }
 
 .sign-up-form select {
@@ -116,5 +115,5 @@ fieldset {
   box-shadow: 0 4px 4px #E5E5E5;
   color: grey;
   padding-left: 5px;
-
 }
+

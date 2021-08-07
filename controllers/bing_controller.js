@@ -6,7 +6,7 @@ const router = express.Router()
 const BING_MAPS_KEY = process.env.BING_MAPS_API_KEY
 
 // use express not app
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
   res.json(BING_MAPS_KEY)
   // + add whatever the front end sent via req.params
 })
