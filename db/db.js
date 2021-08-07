@@ -15,7 +15,7 @@ const parse = require('pg-connection-string').parse;
 let db;
 if (process.env.NODE_ENV === 'production') {
   const config = parse(process.env.DATABASE_URL)
-  db = new pg.Pool(config)
+  db = new pg.Pool({...config, ssl: { rejectUnauthorized: false }});
   
 } else {
   db = new pg.Pool({
