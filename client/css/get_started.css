@@ -57,6 +57,7 @@ fieldset {
   border: none;
   box-shadow: 2px 5px 5px rgb(235, 234, 233);
   transition: ease-in-out .4s;
+  font-size: .9em;
 }
 
 .sign-in-btn:hover {
@@ -99,6 +100,7 @@ fieldset {
   box-shadow: 2px 5px 5px rgb(235, 234, 233);
   transition: ease-in-out .4s;
   margin: 10px 0 0 0;
+  font-size: .9em;
 }
 
 .create-account-btn:hover {
